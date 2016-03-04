@@ -1,12 +1,10 @@
-Pimcore Fronend Login
+Pimcore Frontend Login
 =====================
-
- 
 
 How to install:
 
-1.) Copy files in your website Folder.
-2.) Add this lines to your Action.php
+1. Copy files in your website Folder.
+2. Add this lines to your Action.php
 
 ```php
 <?php
