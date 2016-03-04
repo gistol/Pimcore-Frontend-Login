@@ -8,12 +8,14 @@ How to install:
 
 ```php
 <?php
-if( \Zend_Auth::getInstance()->hasIdentity() ){
-    $ident = \Zend_Auth::getInstance()->getIdentity();
-    $member = \Pimcore\Model\Object\User::getById( $ident[ 'id' ] );
-
-    $this->currentMember = $member;
-    $this->view->currentMember = $member;
+if( isset($_COOKIE['PHPSESSID']) ){
+    if( \Zend_Auth::getInstance()->hasIdentity() ){
+        $ident = \Zend_Auth::getInstance()->getIdentity();
+        $member = \Pimcore\Model\Object\User::getById( $ident[ 'id' ] );
+    
+        $this->currentMember = $member;
+        $this->view->currentMember = $member;
+    }
 }
 ?>
 ```
