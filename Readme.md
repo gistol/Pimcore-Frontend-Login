@@ -8,13 +8,21 @@ How to install:
 
 ```php
 <?php
-if( isset($_COOKIE['PHPSESSID']) ){
+if( isset( $_COOKIE['PHPSESSID'] ) ){
     if( \Zend_Auth::getInstance()->hasIdentity() ){
         $ident = \Zend_Auth::getInstance()->getIdentity();
         $member = \Pimcore\Model\Object\User::getById( $ident[ 'id' ] );
-    
+
         $this->currentMember = $member;
         $this->view->currentMember = $member;
+    }else{
+        if( $this->view->getProperty('need-login') ){
+            $this->redirect( $this->view->getProperty('login-url') );
+        }
+    }
+}else{
+    if( $this->view->getProperty('need-login') ){
+        $this->redirect( $this->view->getProperty('login-url') );
     }
 }
 ?>
