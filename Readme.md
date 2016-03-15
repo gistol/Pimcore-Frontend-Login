@@ -16,13 +16,17 @@ if( isset( $_COOKIE['PHPSESSID'] ) ){
         $this->currentMember = $member;
         $this->view->currentMember = $member;
     }else{
-        if( $this->view->getProperty('need-login') ){
-            $this->redirect( $this->view->getProperty('login-url') );
+        if( $this->view->document ){
+            if( $this->view->getProperty('need-login') ){
+                $this->redirect( $this->view->getProperty('login-url') );
+            }
         }
     }
 }else{
-    if( $this->view->getProperty('need-login') ){
-        $this->redirect( $this->view->getProperty('login-url') );
+    if( $this->view->document ){
+        if( $this->view->getProperty('need-login') ){
+            $this->redirect( $this->view->getProperty('login-url') );
+        }
     }
 }
 ?>
